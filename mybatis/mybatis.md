@@ -2,7 +2,7 @@
 
 ## 一、整体流程
 
-####1、初始化阶段（基于Spring）
+#### 1、初始化阶段（基于Spring）
 
 1. 在DataSourceConfig中通过连接池获得DataSource，并生成SqlSessionFactoryBean(生产SqlSessionFactory的工厂Bean)和DataSourceTransactionManager(Spring的事务管理器)；之后通过SqlSessionFactory创建SQLSessionTemplate(代替DefaultSQLSession，是SqlSession的代理对象。先通过SqlSession执行数据库操作，如果没有问题就提交事务，否则进行回滚)。
 2. MapperScannerConfigurer继承自BeanDefinitionRegistryPostProcessor，,在Spring启动时，会根据包名扫描（@ComponantScan,@MapperScan），从而得到BeanDefinition。将所属的BeanDefinition交给MapperScannerConfigurer处理，它对每一个BeanDefinition设置相关属性。
