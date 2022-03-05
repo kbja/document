@@ -30,7 +30,7 @@ ZAB协议ZookeeperAtomicBroadcastProtocol，Zookeeper通过ZAB协议来保障数
 
 3、follower收到广播后，将自身的epoch更新为新的epoch，并发送给准leader一个【最后一个历史处理事务epoch，历史处理事务集合】做为回复消息。
 
-4、当准leader收到超过半数的follower回复，选一个follower的历史处理事务集合作为初始化集合。选取条件为不存在任意一个follower的历史处理事务id大于选中follower的历史处理事务id。
+4、当准leader收到超过半数的follower回复，选一个follower的历史处理事务集合作为初始化集合。选取条件为该follower的zxid是所有follower中最大的。
 
 ***实际处理逻辑是先对比请求中的epoch，再对比zxid，应该是为了优化对比。***
 
