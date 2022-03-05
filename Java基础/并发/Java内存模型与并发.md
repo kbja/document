@@ -104,3 +104,19 @@
 ### 5、偏向锁
 
 ​		通过更改对象头中的MarkWord，标识占用对象的线程id，如果对象一直被同一个线程占用，相对于轻量级锁省去了拷贝信息的时间。如果对象锁被另一个线程请求，则偏向锁膨胀为轻量级锁。
+
+
+
+## 六、 Synchronized和ReentrantLock异同
+
+### 异：
+
+使用层面
+
+ReentrantLock可以作为对象传入。
+
+功能层面
+
+1. synchronized非公平，ReentrantLock都可以；
+2. synchronize不可中断，ReentrantLock可中断；
+

@@ -66,4 +66,4 @@ CommitLog落盘记录消息，MessageQueue记录CommitLog中的offset，消费�
 
 发送时同步发送；
 
-消费时对ConsumerQueue上锁，需避免消息重试导致堆积。
+消费时对ConsumerQueue上锁，需避免消息重试导致堆积。 
