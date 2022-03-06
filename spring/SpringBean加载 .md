@@ -57,3 +57,20 @@
 * 在创建后，会执行AbstractAutowireCapableBeanFactory.populateBean()对Bean的属性进行填充
 * 将bean的类型进行转化并返回。
 
+## 三、创建bean的三级缓存
+
+### 1. 三级缓存分别是什么
+
+**第一级** 实例化好的bean    singletonObjects
+
+**第二级** 因循环依赖提前暴露的bean  earlySingletonObjects
+
+**第三极** 提前暴露的ObjectFactory。通过getObject方法得到bean的代理对象（预定义的BeanPostProcessor）。 singletonFactories
+
+ 
+### 2. 没有第三级缓存行不行
+
+**不行**
+正常逻辑下，spring是在bean初始化完成后才创建代理。
+当出现循环依赖时，需要提前对bean进行注入，否则会导致注入的对象不是代理对象。此时需要通过第三级缓存创建代理对象，
+
